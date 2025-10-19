@@ -1,0 +1,104 @@
+
+<html>
+<head>
+  <title>Sign Up - FitLife Tracker</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to top, rgb(60, 11, 60), rgb(0, 0, 0));
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .signup-box {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 40px;
+      width: 320px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px black;
+      text-align: center;
+    }
+    h2 {
+      margin-bottom: 20px;
+      color: rgb(216, 58, 231);
+    }
+    input {
+      display: block;
+      width: 90%;
+      margin: 10px auto;
+      padding: 10px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      text-align: center;
+    }
+    button {
+      background: rgb(216, 58, 231);
+      border: none;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 15px;
+      width: 100%;
+    }
+    button:hover {
+      background: #020003;
+      color: white;
+    }
+    .link {
+      margin-top: 15px;
+      font-size: 14px;
+    }
+    .link a {
+      color: rgb(216, 58, 231);
+      text-decoration: none;
+    }
+    .link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="signup-box">
+    <h2>Sign Up</h2>
+    <input type="text" id="name" placeholder="Full Name">
+    <input type="email" id="email" placeholder="Email">
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <input type="password" id="confirmPassword" placeholder="Confirm Password">
+    <button onclick="signUp()">Create Account</button>
+    <div class="link">
+      <p>Already have an account? <a href="login.html">Login</a></p>
+      <p><a href="sanika.html">⬅ Back to Home</a></p>
+    </div>
+  </div>
+
+  <script>
+    function signUp() {
+      let name = document.getElementById("name").value;
+      let email = document.getElementById("email").value;
+      let user = document.getElementById("username").value;
+      let pass = document.getElementById("password").value;
+      let confirmPass = document.getElementById("confirmPassword").value;
+
+      if (!name || !email || !user || !pass || !confirmPass) {
+        alert("Please fill in all fields.");
+        return;
+      }
+
+      if (pass !== confirmPass) {
+        alert("Passwords do not match.");
+        return;
+      }
+
+      alert("Account created successfully for " + name + "!");
+      window.location.href = "progress.html";
+      //send data to a server/database
+    }
+  </script>
+</body>
+</html>

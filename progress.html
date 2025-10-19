@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Log Progress - FitLife Tracker</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to top, rgb(60, 11, 60), rgb(0, 0, 0));
+      color: white;
+      text-align: center;
+    }
+    header {
+      background: rgb(216, 58, 231);
+      color: white;
+      padding: 20px;
+      font-size: 28px;
+    }
+    .content {
+      background: rgba(255, 255, 255, 0.05);
+      margin: 40px auto;
+      padding: 40px;
+      width: 60%;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px black;
+      text-align: center;
+    }
+    input, textarea {
+      display: block;
+      width: 80%;
+      margin: 10px auto;
+      padding: 10px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      text-align: center;
+    }
+    button {
+      background: rgb(216, 58, 231);
+      border: none;
+      padding: 12px 25px;
+      margin-top: 15px;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #020003;
+      color: white;
+    }
+    .back-link a {
+      display: inline-block;
+      margin-top: 20px;
+      background: rgb(216, 58, 231);
+      color: black;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-size: 16px;
+    }
+    .back-link a:hover {
+      background: #020003;
+      color: white;
+    }
+    table {
+      width: 90%;
+      margin: 20px auto;
+      border-collapse: collapse;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      text-align: center;
+    }
+    th {
+      background: rgba(216, 58, 231, 0.8);
+    }
+  </style>
+</head>
+<body>
+  <header>FitLife Tracker</header>
+
+  <div class="content">
+    <h2>Log Your Daily Progress</h2>
+    <p>Enter your daily fitness data below:</p>
+
+    <input type="date" id="date" placeholder="Date">
+    <input type="number" id="calories" placeholder="Calories Burnt">
+    <input type="number" id="steps" placeholder="Steps Taken">
+    <input type="number" id="duration" placeholder="Workout Duration (minutes)">
+    <input type="number" id="weight" placeholder="Weight (kg)">
+    <textarea id="notes" placeholder="Any notes or comments..." rows="3"></textarea>
+
+    <button onclick="addProgress()">Log Progress</button>
+
+    <h3>Your Logs</h3>
+    <table id="progressTable">
+      <tr>
+        <th>Date</th>
+        <th>Calories Burnt</th>
+        <th>Steps</th>
+        <th>Workout Duration</th>
+        <th>Weight</th>
+        <th>Notes</th>
+      </tr>
+    </table>
+
+    <div class="back-link">
+      <a href="progress.html">⬅ Back to Progress Menu</a>
+    </div>
+  </div>
+
+  <script>
+    function addProgress() {
+      let date = document.getElementById("date").value;
+      let calories = document.getElementById("calories").value;
+      let steps = document.getElementById("steps").value;
+      let duration = document.getElementById("duration").value;
+      let weight = document.getElementById("weight").value;
+      let notes = document.getElementById("notes").value;
+
+      if(!date || !calories || !steps || !duration || !weight){
+        alert("Please fill in all required fields.");
+        return;
+      }
+
+      let table = document.getElementById("progressTable");
+      let row = table.insertRow(-1);
+
+      row.insertCell(0).innerText = date;
+      row.insertCell(1).innerText = calories;
+      row.insertCell(2).innerText = steps;
+      row.insertCell(3).innerText = duration;
+      row.insertCell(4).innerText = weight;
+      row.insertCell(5).innerText = notes;
+
+      // Clear inputs
+      document.getElementById("date").value = "";
+      document.getElementById("calories").value = "";
+      document.getElementById("steps").value = "";
+      document.getElementById("duration").value = "";
+      document.getElementById("weight").value = "";
+      document.getElementById("notes").value = "";
+    }
+  </script>
+</body>
+</html>
